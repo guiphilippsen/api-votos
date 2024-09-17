@@ -1,0 +1,103 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > EleitorRepository</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.github.guiphilippsen.api_votos.repository</a>
+</div>
+
+<h1>Coverage Summary for Class: EleitorRepository (com.github.guiphilippsen.api_votos.repository)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">EleitorRepository$MockitoMock$LXzlG3E8</td>
+  </tr>
+  <tr>
+    <td class="name">EleitorRepository$MockitoMock$LXzlG3E8$auxiliary$ADx2XIyY</td>
+  </tr>
+  <tr>
+    <td class="name">EleitorRepository$MockitoMock$LXzlG3E8$auxiliary$yPH5d76p</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.github.guiphilippsen.api_votos.repository;
+&nbsp;
+&nbsp;import com.github.guiphilippsen.api_votos.entity.Eleitor;
+&nbsp;import com.github.guiphilippsen.api_votos.entity.enums.StatusEleitor;
+&nbsp;import jakarta.transaction.Transactional;
+&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+&nbsp;import org.springframework.data.jpa.repository.Modifying;
+&nbsp;import org.springframework.data.jpa.repository.Query;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public interface EleitorRepository extends JpaRepository&lt;Eleitor, Long&gt; {
+&nbsp;
+&nbsp;    @Query(&quot;SELECT e FROM Eleitor e WHERE e.status = :status&quot;)
+&nbsp;    List&lt;Eleitor&gt; findByStatus(StatusEleitor statusEleitor);
+&nbsp;
+&nbsp;    @Modifying
+&nbsp;    @Transactional
+&nbsp;    @Query(&quot;UPDATE Eleitor e SET e.email = :email, e.cpf = :cpf WHERE e.id = userId&quot;)
+&nbsp;    int updateUserEmailAndCpf(Long userId, String email, String cpf);
+&nbsp;
+&nbsp;    @Modifying
+&nbsp;    @Transactional
+&nbsp;    @Query(&quot;UPDATE Eleitor e SET e.status = :newStatus WHERE e.id = :userId&quot;)
+&nbsp;    int updateUserStatus(Long userId, StatusEleitor newStatus);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-09-16 22:34</div>
+</div>
+</body>
+</html>

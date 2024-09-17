@@ -41,8 +41,8 @@ public class CandidatoService {
     }
 
     public String update(Candidato candidatoUpdate, Long id) {
-        Optional<Candidato> candidatoOptional =
-                this.candidatoRepository.findById(id);
+        Optional<Candidato> candidatoOptional = this.candidatoRepository.findById(id);
+
         if (candidatoOptional.isPresent()) {
             Candidato candidato = candidatoOptional.get();
             candidato.setNome(
@@ -60,8 +60,10 @@ public class CandidatoService {
             candidato.setStatus(
                     StatusCandidato.ATIVO
             );
+            this.candidatoRepository.save(candidato);
+            return "Candidato Atulizado";
         }
-        return "Candidato Atulizado";
+        return "Candidato não encontrado";
     }
 
     public List<Candidato> findAllPrefeito() {

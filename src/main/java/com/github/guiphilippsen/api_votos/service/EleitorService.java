@@ -43,12 +43,12 @@ public class EleitorService {
             eleitor.setCpf(
                     eleitorUpdated.getCpf()
             );
-            eleitor.setStatusEleitor(
+            eleitor.setStatus(
                     StatusEleitor.APTO
             );
 
             this.eleitorRepository.updateUserEmailAndCpf(eleitor.getId(), eleitor.getEmail(), eleitor.getCpf());
-            this.eleitorRepository.updateUserStatus(eleitor.getId(), eleitor.getStatusEleitor());
+            this.eleitorRepository.updateUserStatus(eleitor.getId(), eleitor.getStatus());
         }
         return "Eleitor atualizado";
     }
@@ -59,9 +59,9 @@ public class EleitorService {
 
         if (eleitorOptional.isPresent()) {
             Eleitor eleitor = eleitorOptional.get();
-            if(eleitor.getStatusEleitor() != StatusEleitor.VOTOU) {
-                eleitor.setStatusEleitor(StatusEleitor.INATIVO);
-                this.eleitorRepository.updateUserStatus(eleitor.getId(), eleitor.getStatusEleitor());
+            if(eleitor.getStatus() != StatusEleitor.VOTOU) {
+                eleitor.setStatus(StatusEleitor.INATIVO);
+                this.eleitorRepository.updateUserStatus(eleitor.getId(), eleitor.getStatus());
             }
         }
         return "Eleitor removido";

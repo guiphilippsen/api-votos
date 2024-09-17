@@ -5,7 +5,6 @@ import com.github.guiphilippsen.api_votos.entity.Voto;
 import com.github.guiphilippsen.api_votos.repository.EleitorRepository;
 import com.github.guiphilippsen.api_votos.service.VotoService;
 import jakarta.validation.Valid;
-import org.graalvm.nativeimage.c.struct.CStruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
