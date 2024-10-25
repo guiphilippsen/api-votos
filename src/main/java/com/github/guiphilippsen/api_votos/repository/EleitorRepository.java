@@ -6,17 +6,18 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface EleitorRepository extends JpaRepository<Eleitor, Long> {
 
     @Query("SELECT e FROM Eleitor e WHERE e.status = :status")
-    List<Eleitor> findByStatus(StatusEleitor statusEleitor);
+    List<Eleitor> findByStatus(@Param("status") StatusEleitor status);
 
     @Modifying
     @Transactional
-    @Query("UPDATE Eleitor e SET e.email = :email, e.cpf = :cpf WHERE e.id = userId")
+    @Query("UPDATE Eleitor e SET e.email = :email, e.cpf = :cpf WHERE e.id = :userId")
     int updateUserEmailAndCpf(Long userId, String email, String cpf);
 
     @Modifying

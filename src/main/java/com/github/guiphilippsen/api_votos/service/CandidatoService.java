@@ -51,8 +51,8 @@ public class CandidatoService {
             candidato.setCpf(
                     candidato.getCpf()
             );
-            candidato.setFuncao(
-                    candidato.getFuncao()
+            candidato.setCargo(
+                    candidato.getCargo()
             );
             candidato.setNumeroCandidato(
                     candidato.getNumeroCandidato()

@@ -66,7 +66,7 @@ public class VotoService {
         Candidato prefeito = candidatoRepository.findById(voto.getCandidatoPrefeito().getId()).get();
         Candidato vereador = candidatoRepository.findById(voto.getCandidatoVereador().getId()).get();
 
-        if (prefeito.getFuncao() == Funcao.PREFEITO && vereador.getFuncao() == Funcao.VEREADOR) {
+        if (prefeito.getCargo() == Funcao.PREFEITO && vereador.getCargo() == Funcao.VEREADOR) {
             ValidarCandidato(prefeito);
             ValidarCandidato(vereador);
         }else {

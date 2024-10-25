@@ -31,7 +31,7 @@ public class Candidato {
     private Long numeroCandidato;
 
     @Enumerated(EnumType.STRING)
-    private Funcao funcao;
+    private Funcao cargo;
 
     @Enumerated(EnumType.STRING)
     private StatusCandidato status;
